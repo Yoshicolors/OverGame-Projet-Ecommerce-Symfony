@@ -1,0 +1,156 @@
+
+nav:
+  home: "Home"
+  catalog: "Catalog"
+  cart: "Cart"
+  login: "Login"
+  logout: "Logout"
+  register: "Sign up"
+  admin: "Administration"
+  my_account: "My account"
+
+
+footer:
+  about: "About"
+  contact: "Contact"
+  terms: "Terms of service"
+  privacy: "Privacy policy"
+  copyright: "© 2024 OverGame - All rights reserved"
+
+
+auth:
+  email: "Email"
+  password: "Password"
+  remember_me: "Remember me"
+  login_button: "Sign in"
+  register_button: "Create account"
+  logout_button: "Logout"
+  first_name: "First name"
+  last_name: "Last name"
+  confirm_password: "Confirm password"
+
+
+product:
+  name: "Product name"
+  price: "Price"
+  description: "Description"
+  stock: "Stock"
+  status: "Status"
+  category: "Category"
+  add_to_cart: "Add to cart"
+  out_of_stock: "Out of stock"
+  preorder: "Pre-order"
+  available: "Available"
+  view_details: "View details"
+  
+
+cart:
+  title: "My cart"
+  empty: "Your cart is empty"
+  quantity: "Quantity"
+  subtotal: "Subtotal"
+  total: "Total"
+  continue_shopping: "Continue shopping"
+  checkout: "Checkout"
+  remove: "Remove"
+  update: "Update"
+
+
+order:
+  reference: "Reference"
+  date: "Date"
+  status: "Status"
+  total: "Total"
+  items: "Items"
+  preparing: "Preparing"
+  shipped: "Shipped"
+  delivered: "Delivered"
+  cancelled: "Cancelled"
+  my_orders: "My orders"
+  order_details: "Order details"
+
+
+dashboard:
+  title: "Dashboard"
+  products_by_category: "Products by category"
+  latest_orders: "Latest orders"
+  product_availability: "Product availability"
+  total_sales: "Total sales"
+  monthly_sales: "Monthly sales"
+
+
+admin:
+  products: "Product management"
+  users: "User management"
+  orders: "Order management"
+  categories: "Category management"
+  add: "Add"
+  edit: "Edit"
+  delete: "Delete"
+  save: "Save"
+  cancel: "Cancel"
+  actions: "Actions"
+  list: "List"
+  create: "Create"
+
+
+flash:
+  success:
+    created: "Item created successfully"
+    updated: "Item updated successfully"
+    deleted: "Item deleted successfully"
+    order_placed: "Order placed successfully"
+  error:
+    generic: "An error occurred"
+    cannot_delete: "Cannot delete this item"
+    not_found: "Item not found"
+    invalid_form: "The form contains errors"
+
+
+validation:
+  required: "This field is required"
+  email: "Invalid email"
+  min_length: "Minimum {limit} characters"
+  max_length: "Maximum {limit} characters"
+  positive: "Value must be positive"
+  positive_or_zero: "Value cannot be negative"
+
+
+pagination:
+  previous: "Previous"
+  next: "Next"
+  showing: "Showing {start} to {end} of {total} results"
+
+
+search:
+  placeholder: "Search for a game..."
+  no_results: "No results found"
+  results: "Search results"
+
+
+categories:
+  action: "Action"
+  rpg: "RPG"
+  sport: "Sport"
+  adventure: "Adventure"
+  strategy: "Strategy"
+  simulation: "Simulation"
+  racing: "Racing"
+  horror: "Horror"
+
+
+credit_card:
+  number: "Card number"
+  expiration: "Expiration date"
+  cvv: "CVV"
+  add: "Add a card"
+  my_cards: "My credit cards"
+
+
+address:
+  street: "Street"
+  postal_code: "Postal code"
+  city: "City"
+  country: "Country"
+  add: "Add an address"
+  my_addresses: "My addresses"

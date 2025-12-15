@@ -1,0 +1,156 @@
+
+nav:
+  home: "ホーム"
+  catalog: "カタログ"
+  cart: "カート"
+  login: "ログイン"
+  logout: "ログアウト"
+  register: "登録"
+  admin: "管理"
+  my_account: "マイアカウント"
+
+
+footer:
+  about: "について"
+  contact: "お問い合わせ"
+  terms: "利用規約"
+  privacy: "プライバシーポリシー"
+  copyright: "© 2024 OverGame - 全著作権所有"
+
+
+auth:
+  email: "メールアドレス"
+  password: "パスワード"
+  remember_me: "ログイン状態を保持"
+  login_button: "ログイン"
+  register_button: "アカウント作成"
+  logout_button: "ログアウト"
+  first_name: "名"
+  last_name: "姓"
+  confirm_password: "パスワード確認"
+
+
+product:
+  name: "商品名"
+  price: "価格"
+  description: "説明"
+  stock: "在庫"
+  status: "ステータス"
+  category: "カテゴリー"
+  add_to_cart: "カートに追加"
+  out_of_stock: "在庫切れ"
+  preorder: "予約注文"
+  available: "在庫あり"
+  view_details: "詳細を見る"
+  
+
+cart:
+  title: "マイカート"
+  empty: "カートは空です"
+  quantity: "数量"
+  subtotal: "小計"
+  total: "合計"
+  continue_shopping: "買い物を続ける"
+  checkout: "チェックアウト"
+  remove: "削除"
+  update: "更新"
+
+
+order:
+  reference: "参照番号"
+  date: "日付"
+  status: "ステータス"
+  total: "合計"
+  items: "商品"
+  preparing: "準備中"
+  shipped: "発送済み"
+  delivered: "配達済み"
+  cancelled: "キャンセル"
+  my_orders: "マイ注文"
+  order_details: "注文詳細"
+
+
+dashboard:
+  title: "ダッシュボード"
+  products_by_category: "カテゴリー別商品"
+  latest_orders: "最新の注文"
+  product_availability: "商品在庫状況"
+  total_sales: "総売上"
+  monthly_sales: "月間売上"
+
+
+admin:
+  products: "商品管理"
+  users: "ユーザー管理"
+  orders: "注文管理"
+  categories: "カテゴリー管理"
+  add: "追加"
+  edit: "編集"
+  delete: "削除"
+  save: "保存"
+  cancel: "キャンセル"
+  actions: "アクション"
+  list: "リスト"
+  create: "作成"
+
+
+flash:
+  success:
+    created: "正常に作成されました"
+    updated: "正常に更新されました"
+    deleted: "正常に削除されました"
+    order_placed: "注文が完了しました"
+  error:
+    generic: "エラーが発生しました"
+    cannot_delete: "この項目は削除できません"
+    not_found: "項目が見つかりません"
+    invalid_form: "フォームにエラーがあります"
+
+
+validation:
+  required: "この項目は必須です"
+  email: "無効なメールアドレス"
+  min_length: "最小{limit}文字"
+  max_length: "最大{limit}文字"
+  positive: "正の値である必要があります"
+  positive_or_zero: "負の値にはできません"
+
+
+pagination:
+  previous: "前へ"
+  next: "次へ"
+  showing: "{total}件中{start}〜{end}件を表示"
+
+
+search:
+  placeholder: "ゲームを検索..."
+  no_results: "結果が見つかりません"
+  results: "検索結果"
+
+
+categories:
+  action: "アクション"
+  rpg: "RPG"
+  sport: "スポーツ"
+  adventure: "アドベンチャー"
+  strategy: "ストラテジー"
+  simulation: "シミュレーション"
+  racing: "レーシング"
+  horror: "ホラー"
+
+
+credit_card:
+  number: "カード番号"
+  expiration: "有効期限"
+  cvv: "CVV"
+  add: "カードを追加"
+  my_cards: "マイクレジットカード"
+
+
+address:
+  street: "住所"
+  postal_code: "郵便番号"
+  city: "市区町村"
+  country: "国"
+  add: "住所を追加"
+  my_addresses: "マイ住所"

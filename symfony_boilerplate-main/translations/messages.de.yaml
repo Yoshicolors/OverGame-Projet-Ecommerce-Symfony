@@ -1,0 +1,156 @@
+
+nav:
+  home: "Startseite"
+  catalog: "Katalog"
+  cart: "Warenkorb"
+  login: "Anmelden"
+  logout: "Abmelden"
+  register: "Registrieren"
+  admin: "Verwaltung"
+  my_account: "Mein Konto"
+
+
+footer:
+  about: "Über uns"
+  contact: "Kontakt"
+  terms: "AGB"
+  privacy: "Datenschutz"
+  copyright: "© 2024 OverGame - Alle Rechte vorbehalten"
+
+
+auth:
+  email: "E-Mail"
+  password: "Passwort"
+  remember_me: "Angemeldet bleiben"
+  login_button: "Anmelden"
+  register_button: "Konto erstellen"
+  logout_button: "Abmelden"
+  first_name: "Vorname"
+  last_name: "Nachname"
+  confirm_password: "Passwort bestätigen"
+
+
+product:
+  name: "Produktname"
+  price: "Preis"
+  description: "Beschreibung"
+  stock: "Lagerbestand"
+  status: "Status"
+  category: "Kategorie"
+  add_to_cart: "In den Warenkorb"
+  out_of_stock: "Ausverkauft"
+  preorder: "Vorbestellen"
+  available: "Verfügbar"
+  view_details: "Details anzeigen"
+  
+
+cart:
+  title: "Mein Warenkorb"
+  empty: "Ihr Warenkorb ist leer"
+  quantity: "Menge"
+  subtotal: "Zwischensumme"
+  total: "Gesamt"
+  continue_shopping: "Weiter einkaufen"
+  checkout: "Zur Kasse"
+  remove: "Entfernen"
+  update: "Aktualisieren"
+
+
+order:
+  reference: "Referenz"
+  date: "Datum"
+  status: "Status"
+  total: "Gesamt"
+  items: "Artikel"
+  preparing: "In Vorbereitung"
+  shipped: "Versandt"
+  delivered: "Geliefert"
+  cancelled: "Storniert"
+  my_orders: "Meine Bestellungen"
+  order_details: "Bestelldetails"
+
+
+dashboard:
+  title: "Dashboard"
+  products_by_category: "Produkte nach Kategorie"
+  latest_orders: "Letzte Bestellungen"
+  product_availability: "Produktverfügbarkeit"
+  total_sales: "Gesamtumsatz"
+  monthly_sales: "Monatlicher Umsatz"
+
+
+admin:
+  products: "Produktverwaltung"
+  users: "Benutzerverwaltung"
+  orders: "Bestellverwaltung"
+  categories: "Kategorieverwaltung"
+  add: "Hinzufügen"
+  edit: "Bearbeiten"
+  delete: "Löschen"
+  save: "Speichern"
+  cancel: "Abbrechen"
+  actions: "Aktionen"
+  list: "Liste"
+  create: "Erstellen"
+
+
+flash:
+  success:
+    created: "Element erfolgreich erstellt"
+    updated: "Element erfolgreich aktualisiert"
+    deleted: "Element erfolgreich gelöscht"
+    order_placed: "Bestellung erfolgreich aufgegeben"
+  error:
+    generic: "Ein Fehler ist aufgetreten"
+    cannot_delete: "Dieses Element kann nicht gelöscht werden"
+    not_found: "Element nicht gefunden"
+    invalid_form: "Das Formular enthält Fehler"
+
+
+validation:
+  required: "Dieses Feld ist erforderlich"
+  email: "Ungültige E-Mail"
+  min_length: "Mindestens {limit} Zeichen"
+  max_length: "Maximal {limit} Zeichen"
+  positive: "Der Wert muss positiv sein"
+  positive_or_zero: "Der Wert darf nicht negativ sein"
+
+
+pagination:
+  previous: "Zurück"
+  next: "Weiter"
+  showing: "Zeige {start} bis {end} von {total} Ergebnissen"
+
+
+search:
+  placeholder: "Nach einem Spiel suchen..."
+  no_results: "Keine Ergebnisse gefunden"
+  results: "Suchergebnisse"
+
+
+categories:
+  action: "Action"
+  rpg: "RPG"
+  sport: "Sport"
+  adventure: "Abenteuer"
+  strategy: "Strategie"
+  simulation: "Simulation"
+  racing: "Rennen"
+  horror: "Horror"
+
+
+credit_card:
+  number: "Kartennummer"
+  expiration: "Ablaufdatum"
+  cvv: "CVV"
+  add: "Karte hinzufügen"
+  my_cards: "Meine Kreditkarten"
+
+
+address:
+  street: "Straße"
+  postal_code: "Postleitzahl"
+  city: "Stadt"
+  country: "Land"
+  add: "Adresse hinzufügen"
+  my_addresses: "Meine Adressen"

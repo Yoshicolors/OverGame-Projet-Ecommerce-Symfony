@@ -1,17 +1,171 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app.request.locale }}">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}OverGame - {{ 'nav.home'|trans }}{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>🎮</text></svg>">
+        
+        {# Google Fonts pour une meilleure typographie #}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+        
         {% block stylesheets %}
+            <style>
+                /* Police globale pour tout le site */
+                * {
+                    font-family: 'Inter', 'Noto Sans JP', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                }
+                
+                /* Styles pour le sélecteur de langue en dropdown */
+                .language-switcher {
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    z-index: 1000;
+                }
+                
+                .language-dropdown {
+                    position: relative;
+                    display: inline-block;
+                }
+                
+                .language-current {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 10px 15px;
+                    background: #007bff;
+                    color: white;
+                    border: none;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-weight: bold;
+                    font-size: 14px;
+                    transition: background 0.3s;
+                }
+                
+                .language-current:hover {
+                    background: #0056b3;
+                }
+                
+                .language-current::after {
+                    content: '▼';
+                    font-size: 10px;
+                    margin-left: 5px;
+                }
+                
+                .language-menu {
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    right: 0;
+                    margin-top: 5px;
+                    background: white;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    min-width: 180px;
+                    overflow: hidden;
+                }
+                
+                .language-dropdown:hover .language-menu {
+                    display: block;
+                }
+                
+                .language-menu a {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 12px 15px;
+                    color: #333;
+                    text-decoration: none;
+                    transition: background 0.2s;
+                    font-size: 14px;
+                }
+                
+                .language-menu a:hover {
+                    background: #f0f0f0;
+                }
+                
+                .language-menu a.active {
+                    background: #e7f3ff;
+                    color: #007bff;
+                    font-weight: bold;
+                }
+                
+                .language-flag {
+                    font-size: 20px;
+                }
+            </style>
         {% endblock %}
 
         {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}\
         {% endblock %}
     </head>
     <body>
+        {# Sélecteur de langue - Menu déroulant #}
+        <div class="language-switcher">
+            <div class="language-dropdown">
+                <button class="language-current">
+                    <span class="language-flag">
+                        {% if app.request.locale == 'fr' %}🇫🇷
+                        {% elseif app.request.locale == 'en' %}🇬🇧
+                        {% elseif app.request.locale == 'de' %}🇩🇪
+                        {% elseif app.request.locale == 'ja' %}🇯🇵
+                        {% elseif app.request.locale == 'ko' %}🇰🇷
+                        {% else %}🇫🇷{% endif %}
+                    </span>
+                    <span>
+                        {% if app.request.locale == 'fr' %}Français
+                        {% elseif app.request.locale == 'en' %}English
+                        {% elseif app.request.locale == 'de' %}Deutsch
+                        {% elseif app.request.locale == 'ja' %}日本語
+                        {% elseif app.request.locale == 'ko' %}한국어
+                        {% else %}Français{% endif %}
+                    </span>
+                </button>
+                <div class="language-menu">
+                    <a href="{{ path('app_change_locale', {locale: 'fr'}) }}" 
+                       class="{{ app.request.locale == 'fr' ? 'active' : '' }}">
+                        <span class="language-flag">🇫🇷</span>
+                        <span>Français</span>
+                    </a>
+                    <a href="{{ path('app_change_locale', {locale: 'en'}) }}" 
+                       class="{{ app.request.locale == 'en' ? 'active' : '' }}">
+                        <span class="language-flag">🇬🇧</span>
+                        <span>English</span>
+                    </a>
+                    <a href="{{ path('app_change_locale', {locale: 'de'}) }}" 
+                       class="{{ app.request.locale == 'de' ? 'active' : '' }}">
+                        <span class="language-flag">🇩🇪</span>
+                        <span>Deutsch</span>
+                    </a>
+                    <a href="{{ path('app_change_locale', {locale: 'ja'}) }}" 
+                       class="{{ app.request.locale == 'ja' ? 'active' : '' }}">
+                        <span class="language-flag">🇯🇵</span>
+                        <span>日本語</span>
+                    </a>
+                    <a href="{{ path('app_change_locale', {locale: 'ko'}) }}" 
+                       class="{{ app.request.locale == 'ko' ? 'active' : '' }}">
+                        <span class="language-flag">🇰🇷</span>
+                        <span>한국어</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        {# Messages flash #}
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ type }}">
+                    {{ message|trans }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        {# Contenu principal #}
         {% block body %}{% endblock %}
     </body>
 </html>
