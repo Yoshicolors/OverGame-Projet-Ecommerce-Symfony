@@ -1,0 +1,209 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'auth.register_button'|trans }} - {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>🎮 OverGame</h1>
+            <h2>{{ 'auth.register_button'|trans }}</h2>
+        </div>
+
+        {{ form_start(registrationForm, {'attr': {'class': 'auth-form'}}) }}
+            <div class="form-group">
+                {{ form_label(registrationForm.email) }}
+                {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(registrationForm.email) }}
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    {{ form_label(registrationForm.firstName) }}
+                    {{ form_widget(registrationForm.firstName, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.firstName) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(registrationForm.lastName) }}
+                    {{ form_widget(registrationForm.lastName, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.lastName) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(registrationForm.plainPassword.first) }}
+                {{ form_widget(registrationForm.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(registrationForm.plainPassword.first) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(registrationForm.plainPassword.second) }}
+                {{ form_widget(registrationForm.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(registrationForm.plainPassword.second) }}
+            </div>
+
+            <div class="form-check">
+                {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+                {{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'form-check-label'}}) }}
+                {{ form_errors(registrationForm.agreeTerms) }}
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+                {{ 'auth.register_button'|trans }}
+            </button>
+        {{ form_end(registrationForm) }}
+
+        <div class="auth-footer">
+            <p>{{ 'Déjà un compte ?'|trans }}</p>
+            <a href="{{ path('app_login') }}" class="btn btn-secondary">
+                {{ 'auth.login_button'|trans }}
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .auth-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 20px;
+    }
+
+    .auth-card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        padding: 40px;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .auth-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .auth-header h1 {
+        font-size: 48px;
+        margin: 0 0 10px 0;
+    }
+
+    .auth-header h2 {
+        font-size: 24px;
+        font-weight: 600;
+        color: #333;
+        margin: 0;
+    }
+
+    .auth-form {
+        margin-bottom: 20px;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #555;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+        box-sizing: border-box;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #667eea;
+    }
+
+    .form-check {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .form-check-input {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+    }
+
+    .form-check-label {
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .btn {
+        padding: 14px 24px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-block {
+        width: 100%;
+    }
+
+    .btn-secondary {
+        background: #f0f0f0;
+        color: #333;
+    }
+
+    .btn-secondary:hover {
+        background: #e0e0e0;
+    }
+
+    .auth-footer {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .auth-footer p {
+        margin: 0 0 15px 0;
+        color: #666;
+    }
+
+    .form-error {
+        color: #c33;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+</style>
+{% endblock %}

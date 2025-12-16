@@ -1,0 +1,173 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'nav.home'|trans }} - OverGame{% endblock %}
+
+{% block body %}
+<div class="home-container">
+    <div class="hero-section">
+        <h1>🎮 {{ 'Bienvenue sur OverGame'|trans }}</h1>
+        <p class="hero-subtitle">{{ 'Votre boutique de jeux vidéo en ligne'|trans }}</p>
+        
+        <div class="hero-buttons">
+            {% if app.user %}
+                <a href="{{ path('app_home') }}" class="btn btn-primary">
+                    {{ 'nav.catalog'|trans }}
+                </a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('app_admin_dashboard') }}" class="btn btn-secondary">
+                        {{ 'nav.admin'|trans }}
+                    </a>
+                {% endif %}
+            {% else %}
+                <a href="{{ path('app_login') }}" class="btn btn-primary">
+                    {{ 'auth.login_button'|trans }}
+                </a>
+                <a href="{{ path('app_register') }}" class="btn btn-secondary">
+                    {{ 'auth.register_button'|trans }}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="features-section">
+        <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>{{ 'Large Catalogue'|trans }}</h3>
+            <p>{{ 'Plus de 35 jeux vidéo disponibles'|trans }}</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <h3>{{ 'Livraison Rapide'|trans }}</h3>
+            <p>{{ 'Recevez vos jeux rapidement'|trans }}</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">💳</div>
+            <h3>{{ 'Paiement Sécurisé'|trans }}</h3>
+            <p>{{ 'Transactions 100% sécurisées'|trans }}</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .home-container {
+        min-height: calc(100vh - 100px);
+        padding: 40px 20px;
+    }
+
+    .hero-section {
+        text-align: center;
+        padding: 80px 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 20px;
+        color: white;
+        margin-bottom: 60px;
+    }
+
+    .hero-section h1 {
+        font-size: 48px;
+        margin: 0 0 20px 0;
+        font-weight: 700;
+    }
+
+    .hero-subtitle {
+        font-size: 24px;
+        margin: 0 0 40px 0;
+        opacity: 0.9;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        padding: 16px 32px;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-primary {
+        background: white;
+        color: #667eea;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(255,255,255,0.3);
+    }
+
+    .btn-secondary {
+        background: rgba(255,255,255,0.2);
+        color: white;
+        border: 2px solid white;
+    }
+
+    .btn-secondary:hover {
+        background: rgba(255,255,255,0.3);
+        transform: translateY(-3px);
+    }
+
+    .features-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .feature-card {
+        background: white;
+        padding: 40px;
+        border-radius: 16px;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+
+    .feature-icon {
+        font-size: 64px;
+        margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+        font-size: 24px;
+        margin: 0 0 15px 0;
+        color: #333;
+    }
+
+    .feature-card p {
+        font-size: 16px;
+        color: #666;
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+        .hero-section h1 {
+            font-size: 36px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+        }
+
+        .features-section {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
