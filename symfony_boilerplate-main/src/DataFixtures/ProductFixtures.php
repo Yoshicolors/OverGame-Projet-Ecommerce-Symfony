@@ -329,11 +329,10 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             $product->setDescription($productData['description']);
             $product->setStock($productData['stock']);
             $product->setStatus($productData['status']);
-            $product->setCategory($this->getReference($productData['category']));
+            $product->setCategory($this->getReference($productData['category'], \App\Entity\Category::class));
             
             $manager->persist($product);
             
-            // Ajouter une référence pour les 20 premiers produits (pour les images et commandes)
             if ($index < 20) {
                 $this->addReference('product-' . $index, $product);
             }

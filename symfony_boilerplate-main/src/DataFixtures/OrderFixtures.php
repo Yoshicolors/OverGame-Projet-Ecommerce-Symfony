@@ -60,10 +60,9 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
 
         foreach ($orders as $orderData) {
             $order = new Order();
-            $order->setUser($this->getReference($orderData['user']));
+            $order->setUser($this->getReference($orderData['user'], \App\Entity\User::class));
             $order->setStatus($orderData['status']);
             $order->setCreatedAt($orderData['createdAt']);
-            // La référence sera générée automatiquement dans le constructeur
             
             $manager->persist($order);
             $this->addReference($orderData['reference'], $order);

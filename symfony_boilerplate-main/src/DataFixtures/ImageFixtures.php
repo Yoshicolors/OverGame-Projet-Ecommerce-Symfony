@@ -58,8 +58,8 @@ class ImageFixtures extends Fixture implements DependentFixtureInterface
         for ($i = 0; $i < 20; $i++) {
             $image = new Image();
             $image->setUrl($imageUrls[$i][0]);
-            $image->setAlt('Image de ' . $this->getReference('product-' . $i)->getName());
-            $image->setProduct($this->getReference('product-' . $i));
+            $image->setAlt('Image de ' . $this->getReference('product-' . $i, \App\Entity\Product::class)->getName());
+            $image->setProduct($this->getReference('product-' . $i, \App\Entity\Product::class));
             
             $manager->persist($image);
         }

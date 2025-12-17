@@ -66,7 +66,7 @@ class AddressFixtures extends Fixture implements DependentFixtureInterface
             $address->setPostalCode($addressData['postalCode']);
             $address->setCity($addressData['city']);
             $address->setCountry($addressData['country']);
-            $address->setUser($this->getReference($addressData['user']));
+            $address->setUser($this->getReference($addressData['user'], \App\Entity\User::class));
             
             $manager->persist($address);
         }
