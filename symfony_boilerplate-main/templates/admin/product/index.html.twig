@@ -1,0 +1,53 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ 'admin_nav.products'|trans }} - OverGame{% endblock %}
+
+{% block body %}
+<div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
+    <h2>{{ 'admin_nav.products'|trans }}</h2>
+    <a href="{{ path('app_admin_product_new') }}" class="btn btn-primary">{{ 'admin.add'|trans }}</a>
+</div>
+
+<div class="card">
+    {% if products|length > 0 %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>{{ 'product.name'|trans }}</th>
+                    <th>{{ 'product.category'|trans }}</th>
+                    <th>{{ 'product.price'|trans }}</th>
+                    <th>{{ 'product.stock'|trans }}</th>
+                    <th>{{ 'product.status'|trans }}</th>
+                    <th>{{ 'admin.actions'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td><strong>#{{ product.id }}</strong></td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.category.name }}</td>
+                        <td><strong>{{ product.price|number_format(2, ',', ' ') }} €</strong></td>
+                        <td>{{ product.stock }}</td>
+                        <td>
+                            <span class="badge badge-{{ product.status.value == 'disponible' ? 'success' : (product.status.value == 'en_rupture' ? 'danger' : 'warning') }}">
+                                {{ ('product.' ~ product.status.value)|trans }}
+                            </span>
+                        </td>
+                        <td>
+                            <a href="{{ path('app_admin_product_show', {id: product.id}) }}" class="btn btn-secondary btn-sm">{{ 'common.view'|trans }}</a>
+                            <a href="{{ path('app_admin_product_edit', {id: product.id}) }}" class="btn btn-primary btn-sm">{{ 'admin.edit'|trans }}</a>
+                            <form method="post" action="{{ path('app_admin_product_delete', {id: product.id}) }}" style="display: inline;" onsubmit="return confirm('{{ 'common.confirm_delete'|trans }}')">
+                                <button type="submit" class="btn btn-danger btn-sm">{{ 'admin.delete'|trans }}</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p style="text-align: center; color: #718096; padding: 40px 0;">{{ 'common.no_data'|trans }}</p>
+    {% endif %}
+</div>
+{% endblock %}

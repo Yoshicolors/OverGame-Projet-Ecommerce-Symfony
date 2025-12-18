@@ -1,0 +1,134 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ 'admin_nav.dashboard'|trans }} - OverGame{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <h2>{{ 'dashboard.title'|trans }}</h2>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-card-header">
+            <span class="stat-card-title">{{ 'stats.total_users'|trans }}</span>
+            <span class="stat-card-icon">👥</span>
+        </div>
+        <div class="stat-card-value">{{ totalUsers }}</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-card-header">
+            <span class="stat-card-title">{{ 'stats.total_products'|trans }}</span>
+            <span class="stat-card-icon">🎮</span>
+        </div>
+        <div class="stat-card-value">{{ totalProducts }}</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-card-header">
+            <span class="stat-card-title">{{ 'stats.total_orders'|trans }}</span>
+            <span class="stat-card-icon">📦</span>
+        </div>
+        <div class="stat-card-value">{{ totalOrders }}</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-card-header">
+            <span class="stat-card-title">{{ 'stats.revenue'|trans }}</span>
+            <span class="stat-card-icon">💰</span>
+        </div>
+        <div class="stat-card-value">{{ salesStats.total|number_format(0, ',', ' ') }} €</div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">{{ 'dashboard.latest_orders'|trans }}</div>
+    
+    {% if latestOrders|length > 0 %}
+        <table>
+            <thead>
+                <tr>
+                    <th>{{ 'order.reference'|trans }}</th>
+                    <th>{{ 'order.date'|trans }}</th>
+                    <th>{{ 'order.status'|trans }}</th>
+                    <th>{{ 'order.total'|trans }}</th>
+                    <th>{{ 'admin.actions'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in latestOrders %}
+                    <tr>
+                        <td><strong>#{{ order.reference }}</strong></td>
+                        <td>{{ order.createdAt|date('d/m/Y H:i') }}</td>
+                        <td>
+                            <span class="badge badge-{{ order.status.value == 'livree' ? 'success' : (order.status.value == 'annulee' ? 'danger' : (order.status.value == 'expediee' ? 'info' : 'warning')) }}">
+                                {{ ('order.' ~ order.status.value)|trans }}
+                            </span>
+                        </td>
+                        <td><strong>{{ order.total|number_format(2, ',', ' ') }} €</strong></td>
+                        <td>
+                            <a href="#" class="btn btn-secondary btn-sm">{{ 'common.view'|trans }}</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p style="text-align: center; color: #718096; padding: 40px 0;">{{ 'common.no_data'|trans }}</p>
+    {% endif %}
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div class="card">
+        <div class="card-header">{{ 'dashboard.products_by_category'|trans }}</div>
+        {% if productsByCategory|length > 0 %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>{{ 'product.category'|trans }}</th>
+                        <th>{{ 'Nombre'|trans }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in productsByCategory %}
+                        <tr>
+                            <td>{{ item.name }}</td>
+                            <td><strong>{{ item.productCount }}</strong></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p style="text-align: center; color: #718096; padding: 40px 0;">{{ 'common.no_data'|trans }}</p>
+        {% endif %}
+    </div>
+
+    <div class="card">
+        <div class="card-header">{{ 'dashboard.product_availability'|trans }}</div>
+        {% if productAvailability|length > 0 %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>{{ 'product.status'|trans }}</th>
+                        <th>{{ 'Nombre'|trans }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in productAvailability %}
+                        <tr>
+                            <td>
+                                <span class="badge badge-{{ item.status == 'disponible' ? 'success' : (item.status == 'en_rupture' ? 'danger' : 'warning') }}">
+                                    {{ ('product.' ~ item.status)|trans }}
+                                </span>
+                            </td>
+                            <td><strong>{{ item.count }}</strong></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p style="text-align: center; color: #718096; padding: 40px 0;">{{ 'common.no_data'|trans }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

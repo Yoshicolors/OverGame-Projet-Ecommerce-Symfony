@@ -1,0 +1,84 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ 'order.order_details'|trans }} #{{ order.reference }}{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <h2>{{ 'order.order_details'|trans }} #{{ order.reference }}</h2>
+</div>
+
+<div class="card">
+    <h3 style="margin-bottom: 20px;">Informations</h3>
+    <table>
+        <tr>
+            <th style="width: 200px;">{{ 'order.reference'|trans }}</th>
+            <td>#{{ order.reference }}</td>
+        </tr>
+        <tr>
+            <th>Client</th>
+            <td>{{ order.user.firstName }} {{ order.user.lastName }} ({{ order.user.email }})</td>
+        </tr>
+        <tr>
+            <th>{{ 'order.date'|trans }}</th>
+            <td>{{ order.createdAt|date('d/m/Y H:i') }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'order.status'|trans }}</th>
+            <td>
+                <span class="badge badge-{{ order.status.value == 'livree' ? 'success' : (order.status.value == 'annulee' ? 'danger' : (order.status.value == 'expediee' ? 'info' : 'warning')) }}">
+                    {{ ('order.' ~ order.status.value)|trans }}
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <th>{{ 'order.total'|trans }}</th>
+            <td><strong style="font-size: 18px;">{{ order.total|number_format(2, ',', ' ') }} €</strong></td>
+        </tr>
+    </table>
+
+    <h3 style="margin: 30px 0 20px;">{{ 'order.items'|trans }}</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>{{ 'cart.quantity'|trans }}</th>
+                <th>Prix unitaire</th>
+                <th>{{ 'cart.subtotal'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in order.orderItems %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.productPrice|number_format(2, ',', ' ') }} €</td>
+                    <td><strong>{{ item.subtotal|number_format(2, ',', ' ') }} €</strong></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div style="margin-top: 30px;">
+        <form method="post" action="{{ path('app_admin_order_update_status', {id: order.id}) }}" style="display: inline-block; margin-right: 10px;">
+            <label for="status" style="margin-right: 10px; font-weight: 600;">Changer le statut :</label>
+            <select name="status" id="status" class="form-control" style="display: inline-block; width: auto; margin-right: 10px;">
+                <option value="en_preparation" {{ order.status.value == 'en_preparation' ? 'selected' : '' }}>{{ 'order.preparing'|trans }}</option>
+                <option value="expediee" {{ order.status.value == 'expediee' ? 'selected' : '' }}>{{ 'order.shipped'|trans }}</option>
+                <option value="livree" {{ order.status.value == 'livree' ? 'selected' : '' }}>{{ 'order.delivered'|trans }}</option>
+                <option value="annulee" {{ order.status.value == 'annulee' ? 'selected' : '' }}>{{ 'order.cancelled'|trans }}</option>
+            </select>
+            <button type="submit" class="btn btn-primary">{{ 'admin.save'|trans }}</button>
+        </form>
+        <a href="{{ path('app_admin_order_index') }}" class="btn btn-secondary">{{ 'common.back'|trans }}</a>
+    </div>
+</div>
+
+<style>
+    .form-control {
+        padding: 8px 12px;
+        border: 2px solid #e2e8f0;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+</style>
+{% endblock %}

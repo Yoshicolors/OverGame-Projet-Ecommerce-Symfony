@@ -1,0 +1,46 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ 'admin_nav.orders'|trans }} - OverGame{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <h2>{{ 'admin_nav.orders'|trans }}</h2>
+</div>
+
+<div class="card">
+    {% if orders|length > 0 %}
+        <table>
+            <thead>
+                <tr>
+                    <th>{{ 'order.reference'|trans }}</th>
+                    <th>Client</th>
+                    <th>{{ 'order.date'|trans }}</th>
+                    <th>{{ 'order.status'|trans }}</th>
+                    <th>{{ 'order.total'|trans }}</th>
+                    <th>{{ 'admin.actions'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td><strong>#{{ order.reference }}</strong></td>
+                        <td>{{ order.user.firstName }} {{ order.user.lastName }}</td>
+                        <td>{{ order.createdAt|date('d/m/Y H:i') }}</td>
+                        <td>
+                            <span class="badge badge-{{ order.status.value == 'livree' ? 'success' : (order.status.value == 'annulee' ? 'danger' : (order.status.value == 'expediee' ? 'info' : 'warning')) }}">
+                                {{ ('order.' ~ order.status.value)|trans }}
+                            </span>
+                        </td>
+                        <td><strong>{{ order.total|number_format(2, ',', ' ') }} €</strong></td>
+                        <td>
+                            <a href="{{ path('app_admin_order_show', {id: order.id}) }}" class="btn btn-primary btn-sm">{{ 'common.view'|trans }}</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p style="text-align: center; color: #718096; padding: 40px 0;">{{ 'common.no_data'|trans }}</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ product.name }} - OverGame{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <h2>{{ product.name }}</h2>
+</div>
+
+<div class="card">
+    <table>
+        <tr>
+            <th style="width: 200px;">ID</th>
+            <td>#{{ product.id }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'product.name'|trans }}</th>
+            <td>{{ product.name }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'product.category'|trans }}</th>
+            <td>{{ product.category.name }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'product.price'|trans }}</th>
+            <td><strong>{{ product.price|number_format(2, ',', ' ') }} €</strong></td>
+        </tr>
+        <tr>
+            <th>{{ 'product.description'|trans }}</th>
+            <td>{{ product.description }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'product.stock'|trans }}</th>
+            <td>{{ product.stock }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'product.status'|trans }}</th>
+            <td>
+                <span class="badge badge-{{ product.status.value == 'disponible' ? 'success' : (product.status.value == 'en_rupture' ? 'danger' : 'warning') }}">
+                    {{ ('product.' ~ product.status.value)|trans }}
+                </span>
+            </td>
+        </tr>
+    </table>
+
+    <div style="margin-top: 20px;">
+        <a href="{{ path('app_admin_product_index') }}" class="btn btn-secondary">{{ 'common.back'|trans }}</a>
+        <a href="{{ path('app_admin_product_edit', {id: product.id}) }}" class="btn btn-primary">{{ 'admin.edit'|trans }}</a>
+    </div>
+</div>
+{% endblock %}

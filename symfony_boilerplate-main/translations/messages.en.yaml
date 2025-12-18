@@ -154,3 +154,25 @@ address:
   country: "Country"
   add: "Add an address"
   my_addresses: "My addresses"
+
+# Admin Dashboard Stats
+stats:
+  total_users: "Users"
+  total_products: "Products"
+  total_orders: "Orders"
+  revenue: "Revenue"
+
+# Admin Navigation
+admin_nav:
+  dashboard: "Dashboard"
+  users: "Users"
+  products: "Products"
+  orders: "Orders"
+  categories: "Categories"
+  
+# Common
+common:
+  view: "View"
+  back: "Back"
+  confirm_delete: "Are you sure you want to delete this item?"
+  no_data: "No data available"

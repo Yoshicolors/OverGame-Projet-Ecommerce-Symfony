@@ -1,0 +1,43 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ user.firstName }} {{ user.lastName }} - OverGame{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+</div>
+
+<div class="card">
+    <table>
+        <tr>
+            <th style="width: 200px;">ID</th>
+            <td>#{{ user.id }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'auth.first_name'|trans }}</th>
+            <td>{{ user.firstName }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'auth.last_name'|trans }}</th>
+            <td>{{ user.lastName }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'auth.email'|trans }}</th>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <th>Rôles</th>
+            <td>
+                {% for role in user.roles %}
+                    <span class="badge badge-{{ role == 'ROLE_ADMIN' ? 'danger' : 'info' }}">{{ role }}</span>
+                {% endfor %}
+            </td>
+        </tr>
+    </table>
+
+    <div style="margin-top: 20px;">
+        <a href="{{ path('app_admin_user_index') }}" class="btn btn-secondary">{{ 'common.back'|trans }}</a>
+        <a href="{{ path('app_admin_user_edit', {id: user.id}) }}" class="btn btn-primary">{{ 'admin.edit'|trans }}</a>
+    </div>
+</div>
+{% endblock %}

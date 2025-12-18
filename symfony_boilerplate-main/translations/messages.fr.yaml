@@ -44,6 +44,9 @@ product:
   preorder: "Précommander"
   available: "Disponible"
   view_details: "Voir les détails"
+  disponible: "Disponible"
+  en_rupture: "Rupture de stock"
+  precommande: "Précommande"
   
 # Panier
 cart:
@@ -70,6 +73,10 @@ order:
   cancelled: "Annulée"
   my_orders: "Mes commandes"
   order_details: "Détails de la commande"
+  en_preparation: "En préparation"
+  expediee: "Expédiée"
+  livree: "Livrée"
+  annulee: "Annulée"
 
 # Admin - Dashboard
 dashboard:
@@ -156,3 +163,25 @@ address:
   country: "Pays"
   add: "Ajouter une adresse"
   my_addresses: "Mes adresses"
+
+# Admin Dashboard Stats
+stats:
+  total_users: "Utilisateurs"
+  total_products: "Produits"
+  total_orders: "Commandes"
+  revenue: "Chiffre d'affaires"
+
+# Admin Navigation
+admin_nav:
+  dashboard: "Tableau de bord"
+  users: "Utilisateurs"
+  products: "Produits"
+  orders: "Commandes"
+  categories: "Catégories"
+  
+# Common
+common:
+  view: "Voir"
+  back: "Retour"
+  confirm_delete: "Êtes-vous sûr de vouloir supprimer cet élément ?"
+  no_data: "Aucune donnée disponible"

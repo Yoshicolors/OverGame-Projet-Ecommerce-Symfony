@@ -154,3 +154,25 @@ address:
   country: "Land"
   add: "Adresse hinzufÃ¼gen"
   my_addresses: "Meine Adressen"
+
+# Admin Dashboard Stats
+stats:
+  total_users: "Benutzer"
+  total_products: "Produkte"
+  total_orders: "Bestellungen"
+  revenue: "Umsatz"
+
+# Admin Navigation
+admin_nav:
+  dashboard: "Dashboard"
+  users: "Benutzer"
+  products: "Produkte"
+  orders: "Bestellungen"
+  categories: "Kategorien"
+  
+# Common
+common:
+  view: "Ansehen"
+  back: "Zurück"
+  confirm_delete: "Möchten Sie dieses Element wirklich löschen?"
+  no_data: "Keine Daten verfügbar"
