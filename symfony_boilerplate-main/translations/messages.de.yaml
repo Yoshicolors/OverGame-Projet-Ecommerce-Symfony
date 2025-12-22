@@ -13,8 +13,8 @@ nav:
 footer:
   about: "Über uns"
   contact: "Kontakt"
-  terms: "AGB"
-  privacy: "Datenschutz"
+  terms: "Allgemeine Geschäftsbedingungen"
+  privacy: "Datenschutzerklärung"
   copyright: "© 2024 OverGame - Alle Rechte vorbehalten"
 
 
@@ -38,11 +38,14 @@ product:
   status: "Status"
   category: "Kategorie"
   add_to_cart: "In den Warenkorb"
-  out_of_stock: "Ausverkauft"
+  out_of_stock: "Nicht vorrätig"
   preorder: "Vorbestellen"
   available: "Verfügbar"
   view_details: "Details anzeigen"
-  
+  disponible: "Verfügbar"
+  en_rupture: "Ausverkauft"
+  en_precommande: "Vorbestellung"
+
 
 cart:
   title: "Mein Warenkorb"
@@ -68,12 +71,16 @@ order:
   cancelled: "Storniert"
   my_orders: "Meine Bestellungen"
   order_details: "Bestelldetails"
+  en_preparation: "In Vorbereitung"
+  expediee: "Versandt"
+  livree: "Geliefert"
+  annulee: "Storniert"
 
 
 dashboard:
   title: "Dashboard"
   products_by_category: "Produkte nach Kategorie"
-  latest_orders: "Letzte Bestellungen"
+  latest_orders: "Neueste Bestellungen"
   product_availability: "Produktverfügbarkeit"
   total_sales: "Gesamtumsatz"
   monthly_sales: "Monatlicher Umsatz"
@@ -119,8 +126,7 @@ validation:
 pagination:
   previous: "Zurück"
   next: "Weiter"
-  showing: "Zeige {start} bis {end} von {total} Ergebnissen"
-
+  showing: "{start} bis {end} von {total} Ergebnissen anzeigen"
 
 search:
   placeholder: "Nach einem Spiel suchen..."
@@ -132,12 +138,11 @@ categories:
   action: "Action"
   rpg: "RPG"
   sport: "Sport"
-  adventure: "Abenteuer"
+  adventure: "Adventure"
   strategy: "Strategie"
   simulation: "Simulation"
   racing: "Rennen"
   horror: "Horror"
-
 
 credit_card:
   number: "Kartennummer"
@@ -155,24 +160,64 @@ address:
   add: "Adresse hinzufügen"
   my_addresses: "Meine Adressen"
 
-# Admin Dashboard Stats
 stats:
   total_users: "Benutzer"
   total_products: "Produkte"
   total_orders: "Bestellungen"
   revenue: "Umsatz"
 
-# Admin Navigation
 admin_nav:
   dashboard: "Dashboard"
   users: "Benutzer"
   products: "Produkte"
   orders: "Bestellungen"
   categories: "Kategorien"
-  
-# Common
+
+
 common:
-  view: "Ansehen"
-  back: "Zur�ck"
-  confirm_delete: "M�chten Sie dieses Element wirklich l�schen?"
-  no_data: "Keine Daten verf�gbar"
+  view: "Anzeigen"
+  back: "Zurück"
+  confirm_delete: "Sind Sie sicher, dass Sie dieses Element löschen möchten?"
+  no_data: "Keine Daten verfügbar"
+
+
+"Continuer mes achats": "Weiter einkaufen"
+"Vider le panier": "Warenkorb leeren"
+"Payer": "Bezahlen"
+"Se connecter pour commander": "Anmelden um zu bestellen"
+"Découvrir nos jeux": "Unsere Spiele entdecken"
+"Passée le": "Aufgegeben am"
+"Articles commandés": "Bestellte Artikel"
+"Récapitulatif": "Zusammenfassung"
+"Informations de livraison": "Lieferinformationen"
+"Suivi de commande": "Bestellverfolgung"
+"Retour à mes commandes": "Zurück zu meinen Bestellungen"
+"Aucune commande": "Keine Bestellungen"
+"Vous n'avez pas encore passé de commande": "Sie haben noch keine Bestellung aufgegeben"
+"Commande": "Bestellung"
+"Produits similaires": "Ähnliche Produkte"
+"Caractéristiques": "Eigenschaften"
+"Catégorie": "Kategorie"
+"Disponibilité": "Verfügbarkeit"
+"Date de sortie": "Erscheinungsdatum"
+"Description": "Beschreibung"
+"Sous-total": "Zwischensumme"
+"Livraison": "Lieferung"
+"Gratuite": "Kostenlos"
+"Total": "Gesamt"
+"Toutes": "Alle"
+"Résumé": "Zusammenfassung"
+"en stock": "auf Lager"
+"Voir tous les produits": "Alle Produkte anzeigen"
+"Bienvenue sur OverGame": "Willkommen bei OverGame"
+"Votre boutique de jeux vidéo en ligne": "Ihr Online-Shop für Videospiele"
+"Large Catalogue": "Großer Katalog"
+"Plus de 35 jeux vidéo disponibles": "Über 35 Videospiele verfügbar"
+"Livraison Rapide": "Schnelle Lieferung"
+"Recevez vos jeux rapidement": "Erhalten Sie Ihre Spiele schnell"
+"Paiement Sécurisé": "Sichere Zahlung"
+"Transactions 100% sécurisées": "100% sichere Transaktionen"
+"Déjà un compte ?": "Bereits ein Konto?"
+"Pas encore de compte ?": "Noch kein Konto?"
+"Nombre": "Anzahl"
+"Voir les détails": "Details anzeigen"

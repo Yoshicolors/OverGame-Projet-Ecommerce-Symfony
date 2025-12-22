@@ -42,7 +42,10 @@ product:
   preorder: "予約注文"
   available: "在庫あり"
   view_details: "詳細を見る"
-  
+  disponible: "在庫あり"
+  en_rupture: "在庫切れ"
+  en_precommande: "予約注文"
+
 
 cart:
   title: "マイカート"
@@ -68,6 +71,10 @@ order:
   cancelled: "キャンセル"
   my_orders: "マイ注文"
   order_details: "注文詳細"
+  en_preparation: "準備中"
+  expediee: "発送済み"
+  livree: "配達済み"
+  annulee: "キャンセル"
 
 
 dashboard:
@@ -155,24 +162,65 @@ address:
   add: "住所を追加"
   my_addresses: "マイ住所"
 
-# Admin Dashboard Stats
-stats:
-  total_users: "????"
-  total_products: "??"
-  total_orders: "??"
-  revenue: "??"
 
-# Admin Navigation
+stats:
+  total_users: "ユーザー"
+  total_products: "商品"
+  total_orders: "注文"
+  revenue: "売上"
+
+
 admin_nav:
-  dashboard: "???????"
-  users: "????"
-  products: "??"
-  orders: "??"
-  categories: "?????"
-  
-# Common
+  dashboard: "ダッシュボード"
+  users: "ユーザー"
+  products: "商品"
+  orders: "注文"
+  categories: "カテゴリー"
+
+
 common:
-  view: "??"
-  back: "??"
-  confirm_delete: "??????????????????"
-  no_data: "?????????"
+  view: "表示"
+  back: "戻る"
+  confirm_delete: "この項目を削除してもよろしいですか？"
+  no_data: "データがありません"
+
+"Continuer mes achats": "買い物を続ける"
+"Vider le panier": "カートを空にする"
+"Payer": "支払う"
+"Se connecter pour commander": "注文するにはログイン"
+"Découvrir nos jeux": "ゲームを見る"
+"Passée le": "注文日"
+"Articles commandés": "注文された商品"
+"Récapitulatif": "概要"
+"Informations de livraison": "配送情報"
+"Suivi de commande": "注文追跡"
+"Retour à mes commandes": "注文一覧に戻る"
+"Aucune commande": "注文はありません"
+"Vous n'avez pas encore passé de commande": "まだ注文していません"
+"Commande": "注文"
+"Produits similaires": "類似商品"
+"Caractéristiques": "特徴"
+"Catégorie": "カテゴリー"
+"Disponibilité": "在庫状況"
+"Date de sortie": "発売日"
+"Description": "説明"
+"Sous-total": "小計"
+"Livraison": "配送"
+"Gratuite": "無料"
+"Total": "合計"
+"Toutes": "すべて"
+"Résumé": "概要"
+"en stock": "在庫あり"
+"Voir tous les produits": "すべての商品を見る"
+"Bienvenue sur OverGame": "OverGameへようこそ"
+"Votre boutique de jeux vidéo en ligne": "オンラインビデオゲームストア"
+"Large Catalogue": "豊富なカタログ"
+"Plus de 35 jeux vidéo disponibles": "35以上のビデオゲーム"
+"Livraison Rapide": "迅速な配送"
+"Recevez vos jeux rapidement": "ゲームを素早く受け取る"
+"Paiement Sécurisé": "安全な支払い"
+"Transactions 100% sécurisées": "100%安全な取引"
+"Déjà un compte ?": "アカウントをお持ちですか？"
+"Pas encore de compte ?": "まだアカウントをお持ちでないですか？"
+"Nombre": "数"
+"Voir les détails": "詳細を見る"

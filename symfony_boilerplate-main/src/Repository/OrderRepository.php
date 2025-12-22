@@ -20,45 +20,47 @@ class OrderRepository extends ServiceEntityRepository
     /**
      * Retourne les dernières commandes
      */
-    public function findLatest(int $limit = 5): array
-    {
-        return $this->createQueryBuilder('o')
-            ->orderBy('o.createdAt', 'DESC')
-            ->setMaxResults($limit)
-            ->getQuery()
-            ->getResult();
-    }
+    public function findLatestOrders(int $limit = 5): array
+{
+    return $this->createQueryBuilder('o')
+        ->orderBy('o.createdAt', 'DESC')
+        ->setMaxResults($limit)
+        ->getQuery()
+        ->getResult();
+}
 
-    /**
-     * Calcule le montant total des ventes par mois pour les commandes livrées
-     */
-    public function getTotalSalesByMonth(): array
-    {
-        $qb = $this->createQueryBuilder('o')
-            ->select("DATE_FORMAT(o.createdAt, '%Y-%m') as month")
-            ->addSelect('SUM(oi.productPrice * oi.quantity) as total')
-            ->join('o.orderItems', 'oi')
-            ->where('o.status = :status')
-            ->setParameter('status', OrderStatus::DELIVERED)
-            ->groupBy('month')
-            ->orderBy('month', 'DESC');
-
-        return $qb->getQuery()->getResult();
-    }
-
-    /**
-     * Calcule le montant total des ventes
-     */
-    public function getTotalSales(): float
-    {
-        $result = $this->createQueryBuilder('o')
-            ->select('SUM(oi.productPrice * oi.quantity) as total')
-            ->join('o.orderItems', 'oi')
-            ->where('o.status = :status')
-            ->setParameter('status', OrderStatus::DELIVERED)
-            ->getQuery()
-            ->getSingleScalarResult();
-
-        return (float) ($result ?? 0);
-    }
+public function getSalesStatistics(): array
+{
+    $conn = $this->getEntityManager()->getConnection();
+    
+    // Total des ventes
+    $totalSql = "
+        SELECT COALESCE(SUM(oi.product_price * oi.quantity), 0) as total
+        FROM `order` o
+        INNER JOIN order_item oi ON o.id = oi.order_id
+        WHERE o.status = 'livree'
+    ";
+    
+    $total = $conn->executeQuery($totalSql)->fetchOne();
+    
+    // Ventes par mois
+    $monthlySql = "
+        SELECT 
+            DATE_FORMAT(o.created_at, '%Y-%m') as month,
+            SUM(oi.product_price * oi.quantity) as total
+        FROM `order` o
+        INNER JOIN order_item oi ON o.id = oi.order_id
+        WHERE o.status = 'livree'
+        GROUP BY month
+        ORDER BY month DESC
+        LIMIT 12
+    ";
+    
+    $monthly = $conn->executeQuery($monthlySql)->fetchAllAssociative();
+    
+    return [
+        'total' => (float) $total,
+        'monthly' => $monthly
+    ];
+}
 }

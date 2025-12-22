@@ -34,23 +34,24 @@ class ProductRepository extends ServiceEntityRepository
     /**
      * Compte les produits par statut
      */
-    public function countByStatus(): array
-    {
-        $qb = $this->createQueryBuilder('p')
-            ->select('p.status', 'COUNT(p.id) as count')
-            ->groupBy('p.status');
+   public function countByStatus(): array
+{
+    $results = $this->createQueryBuilder('p')
+        ->select('p.status as status', 'COUNT(p.id) as count')
+        ->groupBy('p.status')
+        ->getQuery()
+        ->getResult();
 
-        $results = $qb->getQuery()->getResult();
-
-        // Formater les résultats
-        $formatted = [];
-        foreach ($results as $result) {
-            $formatted[$result['status']] = $result['count'];
-        }
-
-        return $formatted;
+    $formatted = [];
+    foreach ($results as $result) {
+        $formatted[] = [
+            'status' => $result['status'],
+            'count' => $result['count']
+        ];
     }
 
+    return $formatted;
+}
     /**
      * Retourne les produits disponibles
      */

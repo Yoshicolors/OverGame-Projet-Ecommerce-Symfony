@@ -11,6 +11,12 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
-        return $this->render('home/index.html.twig');
+        // Si l'utilisateur est admin, rediriger vers le dashboard
+        if ($this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_admin_dashboard');
+        }
+
+        // Sinon rediriger vers le catalogue
+        return $this->redirectToRoute('app_product_index');
     }
 }

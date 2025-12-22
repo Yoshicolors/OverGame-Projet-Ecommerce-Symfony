@@ -19,13 +19,14 @@ class CategoryRepository extends ServiceEntityRepository
     /**
      * Retourne toutes les catégories avec le nombre de produits
      */
-    public function findAllWithProductCount(): array
-    {
-        return $this->createQueryBuilder('c')
-            ->select('c', 'COUNT(p.id) as productCount')
-            ->leftJoin('c.products', 'p')
-            ->groupBy('c.id')
-            ->getQuery()
-            ->getResult();
-    }
+    public function countProductsByCategory(): array
+{
+    return $this->createQueryBuilder('c')
+        ->select('c.id', 'c.name', 'COUNT(p.id) as productCount')
+        ->leftJoin('c.products', 'p')
+        ->groupBy('c.id')
+        ->orderBy('c.name', 'ASC')
+        ->getQuery()
+        ->getResult();
+}
 }

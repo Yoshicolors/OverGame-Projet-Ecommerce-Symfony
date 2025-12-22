@@ -1,0 +1,431 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'nav.catalog'|trans }} - OverGame{% endblock %}
+
+{% block body %}
+<div class="catalog-container">
+    <div class="catalog-header">
+        <h1>{{ 'nav.catalog'|trans }}</h1>
+        
+        <div class="catalog-actions">
+            <form method="get" class="search-form">
+                <input 
+                    type="text" 
+                    name="search" 
+                    placeholder="{{ 'search.placeholder'|trans }}" 
+                    value="{{ search }}"
+                    class="search-input"
+                >
+                <button type="submit" class="btn btn-search">🔍</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="catalog-layout">
+        <aside class="catalog-sidebar">
+            <div class="filter-section">
+                <h3>{{ 'Catégories'|trans }}</h3>
+                <ul class="category-list">
+                    <li>
+                        <a href="{{ path('app_product_index') }}" 
+                           class="{{ currentCategory is null ? 'active' : '' }}">
+                            {{ 'Toutes'|trans }}
+                        </a>
+                    </li>
+                    {% for category in categories %}
+                        <li>
+                            <a href="{{ path('app_product_index', {category: category.id}) }}"
+                               class="{{ currentCategory == category.id ? 'active' : '' }}">
+                                {{ category.name }}
+                                <span class="count">({{ category.products|length }})</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </aside>
+
+        <main class="catalog-content">
+            {% if products|length > 0 %}
+                <div class="products-grid">
+                    {% for product in products %}
+                        <div class="product-card">
+                            <a href="{{ path('app_product_show', {id: product.id}) }}" class="product-link">
+                                <div class="product-image">
+                                    {% if product.images|length > 0 %}
+                                        <img src="{{ product.images[0].url }}" alt="{{ product.name }}">
+                                    {% else %}
+                                        <div class="no-image">🎮</div>
+                                    {% endif %}
+                                    
+                                    <span class="badge badge-{{ product.status.value == 'disponible' ? 'success' : (product.status.value == 'en_rupture' ? 'danger' : 'warning') }}">
+                                        {{ ('product.' ~ product.status.value)|trans }}
+                                    </span>
+                                </div>
+                                
+                                <div class="product-info">
+                                    <span class="product-category">{{ product.category.name }}</span>
+                                    <h3 class="product-name">{{ product.name }}</h3>
+                                    <p class="product-description">{{ product.description|length > 100 ? product.description|slice(0, 100) ~ '...' : product.description }}</p>
+                                    
+                                    <div class="product-footer">
+                                        <span class="product-price">{{ product.price|number_format(2, ',', ' ') }} €</span>
+                                        
+                                        {% if product.stock > 0 %}
+                                            <a href="{{ path('app_cart_add', {id: product.id}) }}" 
+                                               class="btn btn-add"
+                                               onclick="event.stopPropagation();">
+                                                {{ 'product.add_to_cart'|trans }}
+                                            </a>
+                                        {% else %}
+                                            <span class="out-of-stock">{{ 'product.out_of_stock'|trans }}</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="pagination-container">
+                    {{ knp_pagination_render(products) }}
+                </div>
+            {% else %}
+                <div class="no-results">
+                    <div class="no-results-icon">🔍</div>
+                    <h2>{{ 'search.no_results'|trans }}</h2>
+                    <a href="{{ path('app_product_index') }}" class="btn btn-primary">
+                        {{ 'Voir tous les produits'|trans }}
+                    </a>
+                </div>
+            {% endif %}
+        </main>
+    </div>
+</div>
+
+<style>
+    .catalog-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    .catalog-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .catalog-header h1 {
+        font-size: 36px;
+        font-weight: 700;
+        color: #1a202c;
+        margin: 0;
+    }
+
+    .catalog-actions {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .search-form {
+        display: flex;
+        gap: 10px;
+    }
+
+    .search-input {
+        padding: 12px 20px;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        width: 300px;
+        font-size: 14px;
+    }
+
+    .search-input:focus {
+        outline: none;
+        border-color: #667eea;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-search {
+        background: #667eea;
+        color: white;
+    }
+
+    .btn-search:hover {
+        background: #5a67d8;
+    }
+
+    .catalog-layout {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 40px;
+    }
+
+    .catalog-sidebar {
+        position: sticky;
+        top: 90px;
+        height: fit-content;
+    }
+
+    .filter-section {
+        background: white;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .filter-section h3 {
+        margin: 0 0 20px 0;
+        font-size: 18px;
+        font-weight: 700;
+        color: #1a202c;
+    }
+
+    .category-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .category-list li {
+        margin-bottom: 8px;
+    }
+
+    .category-list a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 12px;
+        color: #4a5568;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: all 0.3s;
+    }
+
+    .category-list a:hover {
+        background: #f7fafc;
+        color: #667eea;
+    }
+
+    .category-list a.active {
+        background: #667eea;
+        color: white;
+    }
+
+    .count {
+        font-size: 12px;
+        opacity: 0.7;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 24px;
+    }
+
+    .product-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: all 0.3s;
+    }
+
+    .product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    .product-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+
+    .product-image {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .no-image {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 64px;
+    }
+
+    .badge {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .badge-success {
+        background: #c6f6d5;
+        color: #22543d;
+    }
+
+    .badge-warning {
+        background: #feebc8;
+        color: #7c2d12;
+    }
+
+    .badge-danger {
+        background: #fed7d7;
+        color: #742a2a;
+    }
+
+    .product-info {
+        padding: 20px;
+    }
+
+    .product-category {
+        display: block;
+        font-size: 12px;
+        color: #667eea;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 8px;
+    }
+
+    .product-name {
+        margin: 0 0 12px 0;
+        font-size: 18px;
+        font-weight: 700;
+        color: #1a202c;
+    }
+
+    .product-description {
+        margin: 0 0 16px 0;
+        font-size: 14px;
+        color: #718096;
+        line-height: 1.5;
+    }
+
+    .product-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 16px;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    .product-price {
+        font-size: 24px;
+        font-weight: 700;
+        color: #667eea;
+    }
+
+    .btn-add {
+        background: #667eea;
+        color: white;
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+
+    .btn-add:hover {
+        background: #5a67d8;
+        transform: scale(1.05);
+    }
+
+    .out-of-stock {
+        font-size: 13px;
+        color: #e53e3e;
+        font-weight: 600;
+    }
+
+    .pagination-container {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .no-results {
+        text-align: center;
+        padding: 80px 20px;
+    }
+
+    .no-results-icon {
+        font-size: 120px;
+        margin-bottom: 20px;
+        opacity: 0.3;
+    }
+
+    .no-results h2 {
+        font-size: 28px;
+        margin: 0 0 30px 0;
+        color: #718096;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    @media (max-width: 1024px) {
+        .catalog-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .catalog-sidebar {
+            position: static;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .catalog-header {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .catalog-actions {
+            flex-direction: column;
+        }
+
+        .search-input {
+            width: 100%;
+        }
+
+        .products-grid {
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        }
+    }
+</style>
+{% endblock %}

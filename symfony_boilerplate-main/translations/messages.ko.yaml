@@ -17,7 +17,6 @@ footer:
   privacy: "개인정보처리방침"
   copyright: "© 2024 OverGame - 모든 권리 보유"
 
-
 auth:
   email: "이메일"
   password: "비밀번호"
@@ -28,7 +27,6 @@ auth:
   first_name: "이름"
   last_name: "성"
   confirm_password: "비밀번호 확인"
-
 
 product:
   name: "상품명"
@@ -42,7 +40,9 @@ product:
   preorder: "예약 주문"
   available: "구매 가능"
   view_details: "상세보기"
-  
+  disponible: "구매 가능"
+  en_rupture: "품절"
+  en_precommande: "예약 주문"
 
 cart:
   title: "내 장바구니"
@@ -54,7 +54,6 @@ cart:
   checkout: "결제하기"
   remove: "삭제"
   update: "업데이트"
-
 
 order:
   reference: "주문번호"
@@ -68,6 +67,10 @@ order:
   cancelled: "취소됨"
   my_orders: "내 주문"
   order_details: "주문 상세"
+  en_preparation: "준비중"
+  expediee: "배송중"
+  livree: "배송완료"
+  annulee: "취소됨"
 
 
 dashboard:
@@ -77,7 +80,6 @@ dashboard:
   product_availability: "상품 재고 현황"
   total_sales: "총 매출"
   monthly_sales: "월별 매출"
-
 
 admin:
   products: "상품 관리"
@@ -93,7 +95,6 @@ admin:
   list: "목록"
   create: "생성"
 
-
 flash:
   success:
     created: "성공적으로 생성되었습니다"
@@ -106,7 +107,6 @@ flash:
     not_found: "항목을 찾을 수 없습니다"
     invalid_form: "양식에 오류가 있습니다"
 
-
 validation:
   required: "필수 항목입니다"
   email: "유효하지 않은 이메일"
@@ -114,7 +114,6 @@ validation:
   max_length: "최대 {limit}자"
   positive: "양수여야 합니다"
   positive_or_zero: "음수일 수 없습니다"
-
 
 pagination:
   previous: "이전"
@@ -155,24 +154,66 @@ address:
   add: "주소 추가"
   my_addresses: "내 주소"
 
-# Admin Dashboard Stats
-stats:
-  total_users: "???"
-  total_products: "??"
-  total_orders: "??"
-  revenue: "??"
 
-# Admin Navigation
+stats:
+  total_users: "사용자"
+  total_products: "상품"
+  total_orders: "주문"
+  revenue: "수익"
+
+
 admin_nav:
-  dashboard: "????"
-  users: "???"
-  products: "??"
-  orders: "??"
-  categories: "????"
-  
-# Common
+  dashboard: "대시보드"
+  users: "사용자"
+  products: "상품"
+  orders: "주문"
+  categories: "카테고리"
+
+
 common:
-  view: "??"
-  back: "??"
-  confirm_delete: "? ??? ?????????"
-  no_data: "???? ????"
+  view: "보기"
+  back: "뒤로"
+  confirm_delete: "이 항목을 삭제하시겠습니까?"
+  no_data: "데이터가 없습니다"
+
+
+"Continuer mes achats": "쇼핑 계속하기"
+"Vider le panier": "장바구니 비우기"
+"Payer": "결제하기"
+"Se connecter pour commander": "주문하려면 로그인"
+"Découvrir nos jeux": "게임 둘러보기"
+"Passée le": "주문일"
+"Articles commandés": "주문된 상품"
+"Récapitulatif": "요약"
+"Informations de livraison": "배송 정보"
+"Suivi de commande": "주문 추적"
+"Retour à mes commandes": "주문 목록으로 돌아가기"
+"Aucune commande": "주문 없음"
+"Vous n'avez pas encore passé de commande": "아직 주문하지 않았습니다"
+"Commande": "주문"
+"Produits similaires": "유사 상품"
+"Caractéristiques": "특징"
+"Catégorie": "카테고리"
+"Disponibilité": "재고 상태"
+"Date de sortie": "출시일"
+"Description": "설명"
+"Sous-total": "소계"
+"Livraison": "배송"
+"Gratuite": "무료"
+"Total": "합계"
+"Toutes": "전체"
+"Résumé": "요약"
+"en stock": "재고 있음"
+"Voir tous les produits": "모든 상품 보기"
+"Bienvenue sur OverGame": "OverGame에 오신 것을 환영합니다"
+"Votre boutique de jeux vidéo en ligne": "온라인 비디오 게임 스토어"
+"Large Catalogue": "풍부한 카탈로그"
+"Plus de 35 jeux vidéo disponibles": "35개 이상의 비디오 게임"
+"Livraison Rapide": "빠른 배송"
+"Recevez vos jeux rapidement": "게임을 빠르게 받으세요"
+"Paiement Sécurisé": "안전한 결제"
+"Transactions 100% sécurisées": "100% 안전한 거래"
+"Déjà un compte ?": "이미 계정이 있으신가요?"
+"Pas encore de compte ?": "아직 계정이 없으신가요?"
+"Nombre": "수량"
+"Voir les détails": "상세보기"

@@ -1,4 +1,4 @@
-# Traductions françaises pour OverGame
+# Traductions françaises pour OverGame - UTF-8
 
 # Navigation
 nav:
@@ -46,8 +46,8 @@ product:
   view_details: "Voir les détails"
   disponible: "Disponible"
   en_rupture: "Rupture de stock"
-  precommande: "Précommande"
-  
+  en_precommande: "Précommande"
+
 # Panier
 cart:
   title: "Mon panier"
@@ -78,7 +78,7 @@ order:
   livree: "Livrée"
   annulee: "Annulée"
 
-# Admin - Dashboard
+# Dashboard
 dashboard:
   title: "Tableau de bord"
   products_by_category: "Produits par catégorie"
@@ -178,10 +178,53 @@ admin_nav:
   products: "Produits"
   orders: "Commandes"
   categories: "Catégories"
-  
+
 # Common
 common:
   view: "Voir"
   back: "Retour"
   confirm_delete: "Êtes-vous sûr de vouloir supprimer cet élément ?"
   no_data: "Aucune donnée disponible"
+
+# Traductions additionnelles
+"Continuer mes achats": "Continuer mes achats"
+"Vider le panier": "Vider le panier"
+"Payer": "Payer"
+"Se connecter pour commander": "Se connecter pour commander"
+"Découvrir nos jeux": "Découvrir nos jeux"
+"Passée le": "Passée le"
+"Articles commandés": "Articles commandés"
+"Récapitulatif": "Récapitulatif"
+"Informations de livraison": "Informations de livraison"
+"Suivi de commande": "Suivi de commande"
+"Retour à mes commandes": "Retour à mes commandes"
+"Aucune commande": "Aucune commande"
+"Vous n'avez pas encore passé de commande": "Vous n'avez pas encore passé de commande"
+"Commande": "Commande"
+"Produits similaires": "Produits similaires"
+"Caractéristiques": "Caractéristiques"
+"Catégorie": "Catégorie"
+"Disponibilité": "Disponibilité"
+"Date de sortie": "Date de sortie"
+"Description": "Description"
+"Sous-total": "Sous-total"
+"Livraison": "Livraison"
+"Gratuite": "Gratuite"
+"Total": "Total"
+"Toutes": "Toutes"
+"Résumé": "Résumé"
+"en stock": "en stock"
+"Voir tous les produits": "Voir tous les produits"
+"Bienvenue sur OverGame": "Bienvenue sur OverGame"
+"Votre boutique de jeux vidéo en ligne": "Votre boutique de jeux vidéo en ligne"
+"Large Catalogue": "Large Catalogue"
+"Plus de 35 jeux vidéo disponibles": "Plus de 35 jeux vidéo disponibles"
+"Livraison Rapide": "Livraison Rapide"
+"Recevez vos jeux rapidement": "Recevez vos jeux rapidement"
+"Paiement Sécurisé": "Paiement Sécurisé"
+"Transactions 100% sécurisées": "Transactions 100% sécurisées"
+"Déjà un compte ?": "Déjà un compte ?"
+"Pas encore de compte ?": "Pas encore de compte ?"
+"Nombre": "Nombre"
+"Voir les détails": "Voir les détails"
+
