@@ -5,8 +5,11 @@ OverGame
 Commandes pour installer :
 
 git clone <(l'url)>
+
 cd symfony_boilerplate-main
+
 composer install
+
 cp .env .env.local
 
 # Pour MySQL
