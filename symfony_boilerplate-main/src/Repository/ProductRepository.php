@@ -34,7 +34,7 @@ class ProductRepository extends ServiceEntityRepository
     /**
      * Compte les produits par statut
      */
-   public function countByStatus(): array
+      public function countByStatus(): array
 {
     $results = $this->createQueryBuilder('p')
         ->select('p.status as status', 'COUNT(p.id) as count')
@@ -44,8 +44,10 @@ class ProductRepository extends ServiceEntityRepository
 
     $formatted = [];
     foreach ($results as $result) {
+        // Convertir l'enum en string avec ->value
+        $status = $result['status'];
         $formatted[] = [
-            'status' => $result['status'],
+            'status' => $status instanceof \App\Enum\ProductStatus ? $status->value : $status,
             'count' => $result['count']
         ];
     }

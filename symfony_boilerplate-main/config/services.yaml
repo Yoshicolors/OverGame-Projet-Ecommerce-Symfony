@@ -11,6 +11,6 @@ services:
 
     App\EventListener\LocaleListener:
         arguments:
-            $defaultLocale: '%kernel.default_locale%'
+            $defaultLocale: 'fr'
         tags:
             - { name: kernel.event_subscriber }
